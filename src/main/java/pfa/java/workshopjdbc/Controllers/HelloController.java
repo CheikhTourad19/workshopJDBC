@@ -86,8 +86,15 @@ public class HelloController {
         User selectedUser = userTable.getSelectionModel().getSelectedItem();
 
         if (selectedUser != null) {
-            UserDAO.deleteUser(selectedUser.getId());
-            userList.remove(selectedUser);  // Supprimer de la liste du tableau
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Suppression d'un utilisateur");
+            alert.setHeaderText("Voulez-vous vraiment supprimer cet utilisateur ?");
+            alert.showAndWait();
+            if (alert.getResult() == ButtonType.OK) {
+                UserDAO.deleteUser(selectedUser.getId());
+                userList.remove(selectedUser);
+            }
+              // Supprimer de la liste du tableau
         }
         userTable.refresh();  // Rafraîchir l'affichage du tableau
 

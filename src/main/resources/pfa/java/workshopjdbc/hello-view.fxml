@@ -11,13 +11,13 @@
 
    <TableView fx:id="userTable">
       <columns>
-         <TableColumn fx:id="nameColumn" prefWidth="150" text="Name" />
+         <TableColumn fx:id="nameColumn" prefWidth="150" text="Nom" />
          <TableColumn fx:id="emailColumn" prefWidth="200" text="Email" />
       </columns>
    </TableView>
 
-   <TextField fx:id="nameField" promptText="Enter name" />
-   <TextField fx:id="emailField" promptText="Enter email" />
+   <TextField fx:id="nameField" promptText="Entrer nom" />
+   <TextField fx:id="emailField" promptText="Entrer email" />
    <AnchorPane>
       <children>
          <Button onAction="#handleDeleteUser" style="-fx-background-color: red;" text="Supprimer User" textFill="WHITE" />

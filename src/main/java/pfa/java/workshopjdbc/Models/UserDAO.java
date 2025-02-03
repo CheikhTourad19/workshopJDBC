@@ -11,7 +11,7 @@ public class UserDAO {
 
     public static List<User> loadusers(){
 
-        String sql = "SELECT id, nom, email FROM user";
+        String sql = "SELECT id, nom, email FROM usersworkshop";
         List<User> users = new ArrayList<>();
         try (Connection conn = DBconnection.connect()) {
             Statement stmt = conn.createStatement();
@@ -25,7 +25,7 @@ public class UserDAO {
         }
     }
     public static void addUser(User user) {
-        String query = "INSERT INTO user (nom, email,prenom) VALUES (?, ?, ?)";
+        String query = "INSERT INTO usersworkshop (nom, email,prenom) VALUES (?, ?, ?)";
 
         try (Connection conn = DBconnection.connect();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -40,7 +40,7 @@ public class UserDAO {
 
     // Mettre à jour un utilisateur
     public static void updateUser(User user) {
-        String query = "UPDATE user SET nom = ?, email = ? WHERE id = ?";
+        String query = "UPDATE usersworkshop SET nom = ?, email = ? WHERE id = ?";
 
         try (Connection conn = DBconnection.connect();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -55,7 +55,7 @@ public class UserDAO {
 
     // Supprimer un utilisateur
     public static void deleteUser(int id) {
-        String query = "DELETE FROM user WHERE id = ?";
+        String query = "DELETE FROM usersworkshop WHERE id = ?";
 
         try (Connection conn = DBconnection.connect();
              PreparedStatement stmt = conn.prepareStatement(query)) {
