@@ -8,7 +8,7 @@ public class DBconnection {
 
     private static final String URL = "jdbc:mysql://mysql-1f241da4-elghothvadel-6af2.g.aivencloud.com:13505/defaultdb";
     private static final String USER = "avnadmin";
-    private static final String PASSWORD = "?????";//a remplir
+    private static final String PASSWORD = "????";//a remplir
 
     public static Connection connect() throws SQLException {
         try {
