@@ -36,20 +36,19 @@ public class HelloController {
         userList = FXCollections.observableArrayList(UserDAO.loadusers());
         userTable.setItems(userList);
 
-        // Debugging: Print the loaded users
+
         for (User user : userList) {
             System.out.println("User in List: " + user.getNom() + " - " + user.getEmail());
         }
 
-        // Bind columns to properties
+
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().nomProperty());
         emailColumn.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
 
-        // Debugging: Verify column bindings
-        System.out.println("Name column bound to: " + nameColumn.getCellValueFactory());
-        System.out.println("Email column bound to: " + emailColumn.getCellValueFactory());
+
+
 
         userTable.setOnMouseClicked(this::handleRowSelect);
     }
@@ -65,6 +64,7 @@ public class HelloController {
             UserDAO.addUser(newUser);  // Ajouter à la base de données
             userList.add(newUser);
             userTable.refresh();  // Rafraîchir l'affichage du tableau
+            clear();
 // Ajouter à la liste du tableau
         }
         else
@@ -79,7 +79,8 @@ public class HelloController {
             selectedUser.setNom(nameField.getText());
             selectedUser.setEmail(emailField.getText());
             UserDAO.updateUser(selectedUser);
-            userTable.refresh();  // Rafraîchir l'affichage du tableau
+            userTable.refresh();// Rafraîchir l'affichage du tableau
+            clear();
         }else
             showalert("Veiller choisir un utilisateur");
     }
@@ -96,6 +97,7 @@ public class HelloController {
             if (alert.getResult() == ButtonType.OK) {
                 UserDAO.deleteUser(selectedUser.getId());
                 userList.remove(selectedUser);
+                clear();
             }
               // Supprimer de la liste du tableau
         }else
