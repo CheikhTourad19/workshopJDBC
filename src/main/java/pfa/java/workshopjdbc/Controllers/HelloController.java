@@ -67,6 +67,8 @@ public class HelloController {
             userTable.refresh();  // Rafraîchir l'affichage du tableau
 // Ajouter à la liste du tableau
         }
+        else
+            showalert("Veiller remplir tous les champs");
     }
 
     @FXML
@@ -78,7 +80,8 @@ public class HelloController {
             selectedUser.setEmail(emailField.getText());
             UserDAO.updateUser(selectedUser);
             userTable.refresh();  // Rafraîchir l'affichage du tableau
-        }
+        }else
+            showalert("Veiller choisir un utilisateur");
     }
 
     @FXML
@@ -95,7 +98,8 @@ public class HelloController {
                 userList.remove(selectedUser);
             }
               // Supprimer de la liste du tableau
-        }
+        }else
+            showalert("Veiller choisir un utilisateur");
         userTable.refresh();  // Rafraîchir l'affichage du tableau
 
     }
@@ -107,5 +111,17 @@ public class HelloController {
             nameField.setText(selectedUser.getNom());
             emailField.setText(selectedUser.getEmail());
         }
+    }
+
+    private void clear(){
+        nameField.clear();
+        emailField.clear();
+    }
+    private void showalert(String message){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Erreur");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
